@@ -5,23 +5,26 @@ class Soda {
     this.price = price;
     this.#dateOfDefault = null;
   }
-  
+
   get dateOfDefault() {
     return this.#dateOfDefault;
   }
 
-  set dateOfDefault(value) {
-    this.#dateOfDefault = value;
-  }
+  set dateOfDefault(data) {
+    // сделать проверку на дату
 
+    if (data instanceof Date) {
+      
+      this.#dateOfDefault = data;
+    }
+  }
 
   #checkTheExpirationDate() {
     const now = new Date();
     if (now > this.#dateOfDefault) {
       return `Газировка ${this.brand} просрочена`;
-    } else {
-      return `Газировка ${this.brand} еще свежая`;
     }
+    return `Газировка ${this.brand} еще свежая`;
   }
 
   getInfo() {
